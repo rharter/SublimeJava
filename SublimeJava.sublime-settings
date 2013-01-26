@@ -38,5 +38,7 @@
     "sublimejava_no_visual_errors": false,
 
     // When set to true, import class under cursor will also organize imports
-    "sublimejava_organize_imports": true
+    "sublimejava_organize_imports": true,
+
+    "sublimejava_import_order": ["java", "javax", "org", "com"]
 }

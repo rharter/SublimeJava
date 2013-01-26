@@ -32,6 +32,7 @@ reload(completioncommon)
 import classopener
 reload(classopener)
 
+from java import *
 
 class SublimeJavaDotComplete(completioncommon.CompletionCommonDotComplete):
     pass
@@ -229,19 +230,6 @@ class ImportJavaClassCommand(sublime_plugin.TextCommand):
 
         if comp.get_setting("sublimejava_organize_imports", True):
             self.view.run_command("organize_java_imports")
-
-
-class OrganizeJavaImportsCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        sections = self.view.find_all(RE_IMPORT_SECTION, 0)
-        section_imports = [self.view.substr(section) for section in sections]
-        for i in range(len(sections)):
-            # TODO pass func to organize as java, 3rd party, project
-            imports = section_imports[i][:-1].split("\n")
-            imports.sort()
-            imports = "\n".join(imports) + "\n"
-
-            self.view.replace(edit, sections[i], imports)
 
 
 class OpenJavaSourceCommand(sublime_plugin.WindowCommand):
